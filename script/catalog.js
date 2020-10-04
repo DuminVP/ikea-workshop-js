@@ -47,8 +47,7 @@ export const catalog = () => {
                 updateSubCatalog(target.textContent, data);
                 subCatalog.classList.add('subopen');
                 itemList.classList.add('active');
-            });
-          
+            });          
         }
 
         if (event.target.closest('.btn-close')) {

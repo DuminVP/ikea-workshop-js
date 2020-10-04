@@ -34,12 +34,10 @@ export const loadData = () => {
         }
     }
 
-    if (location.hash) {
-        getData.item(location.hash.substring(1), data => data);
-    }
+
 
     if (location.pathname.includes('cart')) {
-        getData.cart(cartlist, data => data);
+        getData.cart(cartlist, (data) => console.log(data));
     }
     
 };
