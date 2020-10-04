@@ -7,7 +7,6 @@ import generateGoodsPage from './generateGoodsPage.js';
 import generateCartPage from './generateCartPage.js';
 import generateItemPage from './generateItemPage.js';
 
-
 generateHeader();
 generateFooter();
 generateCatalog();

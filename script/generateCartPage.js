@@ -9,16 +9,11 @@ const generateCartPage = () => {
         const cartTotalPrice = document.querySelector('.cart-total-price');
 
         const renderCartList = (data) => {
-
             cartList.textContent = '';
-
             let totalPrice = 0;
-
             data.forEach(({ name: itemName, id, img, price, description, count} ) => {
                 let options = '';
-
                 let countUser = userData.cartList.find(item => item.id === id).count;
-
                 if(countUser > count) { // сколько положил в карзину столько и отображается
                     countUser = count
                 }
@@ -27,14 +22,12 @@ const generateCartPage = () => {
                     <option value=${i} ${countUser === i ? 'selected' : ''}>${i}</option>
                     `
                 }
-
-                totalPrice += countUser * price
-
+                totalPrice += countUser * price // сумма в корзине
                 cartList.insertAdjacentHTML('beforeend', `
                     <li class="cart-item">
                         <div class="product">
                             <div class="product__image-container">
-                                <img src=${img[0]} 
+                                <img src=${img[0]}
                                     alt="${itemName} - ${description}">
                             </div>
                             <div class="product__description">
@@ -53,7 +46,6 @@ const generateCartPage = () => {
                                 </div>
                             </div>
                             <div class="product__controls">
-
                                 <div class="product-controls__remove">
                                     <button type="button" class="btn btn-remove" data-idd=${id}>
                                         <img src="image/remove-thin-24.16c1cc7a.svg" alt="Удалить товар">
@@ -62,7 +54,6 @@ const generateCartPage = () => {
                                 <div class="product-controls__quantity">
                                     <select title="Выберите количество" aria-label="Выберите количество" data-idd=${id}>
                                         ${options}
-
                                     </select>
                                 </div>
                             </div>
@@ -70,18 +61,16 @@ const generateCartPage = () => {
                     </li>
                 `)
             });
-            cartTotalPrice.textContent = totalPrice;           
+            cartTotalPrice.textContent = totalPrice;
         }
 
         cartList.addEventListener('change', (e) => {
 //            console.log(e.target.value);
 //            console.log(e.target.dataset.idd);
-            
             userData.changeCountCartList = {
                 id: e.target.dataset.idd,
                 count: parseInt(e.target.value)
             };
-            
             getData.cart(userData.cartList, renderCartList);
         });
 
@@ -92,12 +81,8 @@ const generateCartPage = () => {
                 userData.deleteItemCart = btnRemove.dataset.idd;
                 getData.cart(userData.cartList, renderCartList);
             }
-
         });
-
-        getData.cart(userData.cartList, renderCartList); 
-
-        
+        getData.cart(userData.cartList, renderCartList);
     }
 };
 

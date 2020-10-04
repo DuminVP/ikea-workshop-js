@@ -1,16 +1,12 @@
-'use strict';
 
-import { catalog } from './catalog.js';
 import { getData } from './getData.js';
 
 const generateFooter = () => {
-
     getData.catalog(data => {
-        
+
         let catalogList = '';
 
         data.forEach(item => {
-
             catalogList += `
                 <li class="footer-list">
                     <a href="goods.html?cat=${item}">${item}</a>
@@ -19,7 +15,6 @@ const generateFooter = () => {
         });
 
         const footer = `
-        
             <footer>
                 <div class="container">
                     <div class="footer">
@@ -53,9 +48,7 @@ const generateFooter = () => {
                     </div>
                 </div>
             </footer>
-
         `;
-
         document.body.insertAdjacentHTML('beforeend', footer);
     });
 };

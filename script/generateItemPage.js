@@ -6,11 +6,11 @@ const NEW_COUNT_ITEM = 6;
 
 const generateItemPage = () => {
 
-    const renderCard = ({ 
-        category, count, description, id, 
+    const renderCard = ({
+        category, count, description, id,
         img, name: itemName, price, subcategory }) => { // получаем данные
 
-        const breadcrumbLink = document.querySelectorAll('.breadcrumb__link'); 
+        const breadcrumbLink = document.querySelectorAll('.breadcrumb__link');
         const goodImages = document.querySelector('.good-images');
         const goodItemNew = document.querySelector('.good-item__new');
         const goodItemHeader = document.querySelector('.good-item__header');
@@ -35,7 +35,7 @@ const generateItemPage = () => {
         btnAddWishlist.dataset.idd = id;
 
         img.forEach(item => {
-            goodImages.insertAdjacentHTML('afterbegin', ` 
+            goodImages.insertAdjacentHTML('afterbegin', `
             <div class="good-image__item">
                 <img src="${item}" alt="${itemName} - ${description}">
             </div>
@@ -67,8 +67,6 @@ const generateItemPage = () => {
 
         checkWishList();
     };
-
-
 
     if (location.hash && location.pathname.includes('card')) {
         getData.item(location.hash.substring(1), renderCard);

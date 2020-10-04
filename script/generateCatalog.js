@@ -4,19 +4,14 @@ import { getData } from './getData.js';
 import { catalog } from './catalog.js';
 
 const generateCatalog = () => {
-
     getData.catalog(data => { // получаем данные
-
         let catalogList = ''; // очищаем
-
         data.forEach(item => {
-        
             catalogList += `
                 <li class="catalog-list__item">
                     <a href="goods.html?cat=${item}">${item}</a>
                 </li>
             `;
-
         });
 
         const catalogHTML = `
@@ -32,11 +27,9 @@ const generateCatalog = () => {
                 </ul>
             </div>
         `;
-
         document.body.insertAdjacentHTML('beforeend', catalogHTML);
         catalog();
     });
-
 };
 
 export default generateCatalog;

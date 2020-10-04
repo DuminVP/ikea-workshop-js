@@ -14,7 +14,6 @@ export const catalog = () => {
         btnReturn = document.querySelector('.btn-return');
 
     const overlay = document.createElement('div');
-
     overlay.classList.add('overlay');
     document.body.insertAdjacentElement('beforeend', overlay);
 
@@ -34,26 +33,21 @@ export const catalog = () => {
     // функция открытия подменю
     const handlerCatalog = event => {
         event.preventDefault();
-
         const target = event.target;
         const itemList = target.closest('.catalog-list__item');
-
         document.querySelectorAll('.catalog-list__item').forEach(item => item.classList.remove('active'));
 
         if (itemList) {
-
             getData.subCatalog(target.textContent, (data) => {
-
                 updateSubCatalog(target.textContent, data);
                 subCatalog.classList.add('subopen');
                 itemList.classList.add('active');
-            });          
+            });
         }
 
         if (event.target.closest('.btn-close')) {
             closeMenu();
         }
-
     };
 
     // функция закрытия подменю
@@ -65,7 +59,7 @@ export const catalog = () => {
     btnBurger.addEventListener('click', openMenu); // открыть меню при нажатии на бургер-кнопку
     overlay.addEventListener('click', closeMenu); // закрыть меню при нажатии мимо меню
     catalogJS.addEventListener('click', handlerCatalog); // открыть подкаталог
-  
+
     // закрыть подкаталог
     subCatalog.addEventListener('click', event => {
         const btnReturn = event.target.closest('.btn-return');

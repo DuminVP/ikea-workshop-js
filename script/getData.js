@@ -53,7 +53,7 @@ export const getData = {
                 if (!arr.includes(item.category)) {
                     arr.push(item.category);
                 }
-                return arr; // ретерн обизателен
+                return arr;
             }, []);
             callback(result);
         });

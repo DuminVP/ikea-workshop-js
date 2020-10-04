@@ -19,7 +19,7 @@ const userData = {
     },
 
     cartListData: getLocalStorage('cartList'), // {id: string, count: number}
-    
+
     get cartList() {
         return this.cartListData;
     },
@@ -41,7 +41,6 @@ const userData = {
     set changeCountCartList(itemCart) {
         let obj = this.cartListData.find(item => item.id === itemCart.id);
         obj.count = itemCart.count;
-
         setLocalStorage('cartList', this.cartList);
     },
 
@@ -55,7 +54,6 @@ const userData = {
         this.cartList.splice(index, 1);
         setLocalStorage('cartList', this.cartList);
     }
-
 };
 
 export default userData;
