@@ -11,7 +11,7 @@ export const getData = {
             .then(response => response.json())
             .then(process);
     },
-    wishlist(list, callback) {
+    wishList(list, callback) {
         this.get(data => {
             const result = data.filter(item => list.includes(item.id));
             callback(result);
@@ -38,11 +38,11 @@ export const getData = {
     search(value, callback) {
         this.get(data => {
             const result = data.filter(item => {
-               for (const prop in item) {
-                   if (PARAM.search.includes(prop) && item[prop].toLowerCase().includes(value.toLowerCase())) {
-                       return true;
-                   }
-               }
+                for (const prop in item) {
+                    if (PARAM.search.includes(prop) && item[prop].toLowerCase().includes(value.toLowerCase())) {
+                        return true;
+                    }
+                }
             });
             callback(result);
         });
@@ -54,7 +54,7 @@ export const getData = {
                     arr.push(item.category);
                 }
                 return arr; // ретерн обизателен
-             }, []);
+            }, []);
             callback(result);
         });
     },

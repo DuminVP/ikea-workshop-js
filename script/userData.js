@@ -18,30 +18,44 @@ const userData = {
         setLocalStorage('wishlist', this.wishListData);
     },
 
-    cartListData: getLocalStorage('cartlist'), // {id: string, count: number}
+    cartListData: getLocalStorage('cartList'), // {id: string, count: number}
     
     get cartList() {
         return this.cartListData;
     },
 
     set cartList(id) {
-        let object = this.cartListData.find(el => el.id === id);
-        if (object) {
-            object.count++;
+        let obj = this.cartListData.find(item => item.id === id); // находим обьект по id
+        if (obj) {
+            obj.count++;
         } else {
-            object = {
+            obj = {
                 id,
                 count: 1,
             };
-            this.cartListData.push(object);
+            this.cartListData.push(obj);
         }
-        setLocalStorage('cartlist', this.cartListData);
+        setLocalStorage('cartList', this.cartList);
     },
 
-    removeCartItem(id) {
-        this.cartListData = this.cartListData.filter(el => el.id !== id);
-        setLocalStorage('cartlist', this.cartListData);
+    set changeCountCartList(itemCart) {
+        let obj = this.cartListData.find(item => item.id === itemCart.id);
+        obj.count = itemCart.count;
+
+        setLocalStorage('cartList', this.cartList);
     },
+
+    set deleteItemCart(idd) {
+        let index = -1;
+        this.cartList.forEach((item, i) => {
+            if (item.id === idd) {
+                index = i;
+            }
+        });
+        this.cartList.splice(index, 1);
+        setLocalStorage('cartList', this.cartList);
+    }
+
 };
 
 export default userData;

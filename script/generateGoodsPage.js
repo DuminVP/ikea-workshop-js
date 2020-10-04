@@ -4,9 +4,6 @@ import userData from './userData.js';
 const COUNTER = 6;
 
 
-
-const wishlist = ['idd005', 'idd100', 'idd086', 'idd010'];
-
 const generateGoodsPage = () => {
     const mainHeader = document.querySelector('.main-header');
 
@@ -20,6 +17,7 @@ const generateGoodsPage = () => {
             goods.textContent = location.search === '?wishlist' ?
                 'Список желаний пуст' : 
                 'К сожалению по авашему запросу ничего не найдено';
+            return;
         }
   
         data.forEach(item => {
@@ -84,7 +82,7 @@ const generateGoodsPage = () => {
             getData.search(value, generateCards);
             mainHeader.textContent = `Поиск: ${value}`;
         } else if (prop === 'wishlist') {
-            getData.wishlist(userData.wishlist, generateCards);
+            getData.wishList(userData.wishList, generateCards);
             mainHeader.textContent = `Список желаний`;
         } else if (prop === 'cat' || prop === 'subcat') {
             getData.category(prop, value, generateCards);
